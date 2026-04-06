@@ -59,9 +59,11 @@ function handleDrawOperationEvent(){
     let scalar = Number(document.getElementById("sca").value);
     if (document.getElementById("op-select").value === "add"){
         choice = v1.add(v2);
+        drawVector(choice, "green");
     }
     else if (document.getElementById("op-select").value === "sub"){
         choice = v1.sub(v2);
+        drawVector(choice, "green");
     }
     else if (document.getElementById("op-select").value === "mul"){
         choice = v1.mul(scalar);
