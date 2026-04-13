@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Draw a point (1)</title>
+    </head>
+
+    <body onload="main()">
+        <canvas id="webgl" width="400" height="400">
+        Please use the browser supporting "canvas".
+        </canvas>
+        <div>
+
+        <div id = "numdot"> XXX</div>
+        <div>
+            <button type="button" id="green">Green</button>
+            <button type="button" id="red">Red</button>
+            <button type="button" id="clear">Clear</button>
+        </div>
+        <div>
+            <button type="button" id = "pointB">Point</button>
+            <button type="button" id = "triB">Triangle</button>
+            <button type="button" id = "circleB">Circle</button>
+        </div>
+        <div>
+            <button type="button" id = "catB">Add cat</button>
+        </div>
+        <div>
+            Red <input type="range" min ="0" max = "100" value = "100" class = "slider" id = "redSlide">
+        </div>
+        <div>
+            Green <input type="range" min ="0" max = "100" value = "0" class = "slider" id = "greenSlide">
+        </div>
+        <div>
+            Blue <input type="range" min ="0" max = "100" value = "0" class = "slider" id = "blueSlide">
+        </div>
+        <div>
+            Size <input type="range" min = "5" max = "50" value = "10" class = "slider" id = "sizeSlide">
+        </div>
+        <div>
+            Circle segments <input type="range" min = "5" max = "50" value = "10" class = "slider" id = "circleSlide">
+        </div>
+        <div>
+            <h2>Reference image: </h2>
+            <img src="../lib/cat.jpg" alt="cat made with triangles" width="500" height="500">
+        </div>
+
+        <script src="../lib/webgl-utils.js"></script>
+        <script src="../lib/webgl-debug.js"></script>
+        <script src="../lib/cuon-utils.js"></script>
+        <script src ="../lib/Triangle.js"></script>
+        <script src="../lib/Circle.js"></script>
+        <script src="../lib/Point.js"></script>
+        <script src="asg1.js"></script>
+    </body>
+</html>
