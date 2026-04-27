@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Blocky animal</title>
+    </head>
+
+    <body onload="main()">
+        <canvas id="webgl" width="600" height="600">
+        Please use the browser supporting "canvas".
+        </canvas>
+        <div>
+
+        <div id = "numdot"> XXX</div>
+
+        <div>
+            Left ear <input type="range" min = "0" max = "45" value = "0" class = "slider" id = "leftESlide">
+            Animation: <button type="button" id = "onB">ON</button>
+            <button type="button" id = "offB">OFF</button>
+        </div>
+        <div>
+            Right ear <input type="range" min = "0" max = "45" value = "0" class = "slider" id = "rightESlide">
+        </div>
+        <div> 
+            Lower mouth <input type="range" min = "-10" max = "0" value = "0" class = "slider" id = "lowMSlide">
+        </div>
+        <div>
+            Left arm <input type="range" min = "-10" max = "70" value = "0" class = "slider" id = "leftArmSlide">
+        </div>
+        <div>
+            Left arm forearm <input type="range" min = "-10" max = "110" value = "-10" class = "slider" id = "leftForeArmSlide">
+        </div>
+        <div>
+            Left hand <input type="range" min = "-10" max = "80" value = "-10" class = "slider" id = "leftHandSlide">
+        </div>
+        <div>
+            Right arm <input type="range" min = "-45" max = "0" value = "90" class = "slider" id = "rightArmSlide">
+        </div>
+        <div>
+            Right forearm <input type="range" min = "-10" max = "0" value = "180" class = "slider" id = "rightForeArmSlide">
+        </div>
+        <div>
+            Right hand <input type="range" min = "-45" max = "45" value = "10" class = "slider" id = "rightHandSlide">
+        </div>
+        <div>
+            Left foot <input type="range" min = "-10" max = "7" value = "-10" class = "slider" id = "leftFootSlide">
+        </div>
+        <div>
+            Right foot <input type="range" min = "-10" max = "7" value = "-10" class = "slider" id = "rightFootSlide">
+        </div>
+        <div>
+            Camera Angle <input type="range" min = "-360" max = "360" value = "5" class = "slider" id = "cameraSlide">
+        </div>
+
+        <script src="lib/webgl-utils.js"></script>
+        <script src="lib/webgl-debug.js"></script>
+        <script src="lib/cuon-utils.js"></script>
+        <script src="lib/cuon-matrix-cse160.js"></script>
+
+        <script src="lib/Cube.js"></script>
+        <script src="lib/Sphere.js"></script>
+        <script src="lib/Triangle.js"></script>
+        <script src="lib/Circle.js"></script>
+
+        <script src="asgn2.js"></script>
+    </body>
+</html>
