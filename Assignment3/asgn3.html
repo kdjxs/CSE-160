@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Virtual world</title>
+    </head>
+
+    <body onload="main()">
+        <canvas id="webgl" width="1600" height="800">
+        Please use the browser supporting "canvas".
+        </canvas>
+        <div>
+
+        <div id = "numdot"> XXX</div>
+        <div>
+            Camera Angle <input type="range" min = "-360" max = "360" value = "5" class = "slider" id = "cameraSlide">
+        </div>
+        <div>
+            Your castle has been attacked, build a bridge to reach safety!
+        </div>
+        <div>
+            Press f to place blocks.
+            Press g to destroy blocks.
+            Blocks can only be placed between the gap.
+        </div>
+
+        <script src="lib/webgl-utils.js"></script>
+        <script src="lib/webgl-debug.js"></script>
+        <script src="lib/cuon-utils.js"></script>
+        <script src="lib/cuon-matrix-cse160.js"></script>
+
+        <script src="lib/Cube.js"></script>
+        <script src="lib/Triangle.js"></script>
+
+        <script src="lib/camera.js"></script>
+        <script src="lib/world.js"></script>
+        <script src="asgn3.js"></script>
+    </body>
+</html>
