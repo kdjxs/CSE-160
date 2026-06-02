@@ -1,0 +1,11 @@
+Model Information:
+* title:	Light stick
+* source:	https://sketchfab.com/3d-models/light-stick-6d83d1e15e694931b1efe3bd6170fa31
+* author:	mimi990619 (https://sketchfab.com/mimi990619)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Light stick" (https://sketchfab.com/3d-models/light-stick-6d83d1e15e694931b1efe3bd6170fa31) by mimi990619 (https://sketchfab.com/mimi990619) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

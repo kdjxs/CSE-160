@@ -1,0 +1,11 @@
+Model Information:
+* title:	Music_concert_stage_Low_poly
+* source:	https://sketchfab.com/3d-models/music-concert-stage-low-poly-89629aceff334b34a76c30d42f8327bd
+* author:	Sameer.Uddin (https://sketchfab.com/Sameer.Uddin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Music_concert_stage_Low_poly" (https://sketchfab.com/3d-models/music-concert-stage-low-poly-89629aceff334b34a76c30d42f8327bd) by Sameer.Uddin (https://sketchfab.com/Sameer.Uddin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
