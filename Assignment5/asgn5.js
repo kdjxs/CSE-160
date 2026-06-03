@@ -85,6 +85,22 @@ function main() {
     controls.target.set(0, 0.5, 0);
     controls.update();
 
+    // Audio
+    const listener = new THREE.AudioListener();
+    camera.add( listener );
+    const sound = new THREE.Audio( listener );
+    const audioLoader = new THREE.AudioLoader();
+    audioLoader.load( 'Audio/song.mp3', function( buffer ) {
+        sound.setBuffer( buffer );
+        sound.setLoop( true );
+        sound.setVolume( 0.5 );
+    });
+    document.getElementById('startBtn').addEventListener('click', () => {
+        sound.play();
+        document.getElementById('startBtn').style.display = 'none';
+    });
+
+
     // Plane stage
     const geometry = new THREE.PlaneGeometry(15, 15);
     const material = new THREE.MeshBasicMaterial({map: loadColorTexture('images/top.jpg')});
