@@ -3,7 +3,7 @@ import {GUI} from 'three/addons/libs/lil-gui.module.min.js';
 import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { ImprovedNoise } from 'three/addons/math/ImprovedNoise.js';
+import { Reflector } from 'three/addons/objects/Reflector.js';
 
 function main() {
     const canvas = document.querySelector('#c');
@@ -85,13 +85,137 @@ function main() {
     controls.target.set(0, 0.5, 0);
     controls.update();
 
-    // Plane
-    const geometry = new THREE.PlaneGeometry(15, 20);
+    // Plane stage
+    const geometry = new THREE.PlaneGeometry(15, 15);
     const material = new THREE.MeshBasicMaterial({map: loadColorTexture('images/top.jpg')});
     const plane = new THREE.Mesh(geometry, material);
     plane.rotation.x = -Math.PI / 2;
-    plane.position.z = -2;
+    plane.position.z = -5;
+    plane.position.y = -0.001;
     scene.add(plane);
+
+    // Plane front
+    const planeGeo = new THREE.PlaneGeometry(50, 25);
+    const planeLarge = new THREE.Mesh(planeGeo, material);
+    planeLarge.rotation.x = -Math.PI / 2;
+    planeLarge.position.z = 10;
+    scene.add(planeLarge);
+
+    // Plane left 
+    const planeFGeo = new THREE.PlaneGeometry(26, 10);
+    const planeF = new THREE.Mesh(planeFGeo, material);
+    planeF.rotation.x = -Math.PI / 2;
+    planeF.position.z = -7.5;
+    planeF.position.x = -12;
+    planeF.position.y = 0.001;
+    scene.add(planeF);
+
+    // Plane right
+    const planeRGeo = new THREE.PlaneGeometry(26, 10);
+    const planeR = new THREE.Mesh(planeRGeo, material);
+    planeR.rotation.x = -Math.PI / 2;
+    planeR.position.z = -7.5;
+    planeR.position.x = 12;
+    planeR.position.y = 0.01;
+    scene.add(planeR);
+
+    // Reflection back
+    const refGeo = new THREE.PlaneGeometry( 20, 20 );
+    const reflector = new Reflector( refGeo, {
+        clipBias: 0.003,
+        textureWidth: window.innerWidth * window.devicePixelRatio,
+        textureHeight: window.innerHeight * window.devicePixelRatio,
+        color: 0xc1cbcb
+    } );
+    reflector.position.x = -15;
+    reflector.position.z = -12;
+    scene.add(reflector);
+
+    const reflector2 = new Reflector( refGeo, {
+        clipBias: 0.003,
+        textureWidth: window.innerWidth * window.devicePixelRatio,
+        textureHeight: window.innerHeight * window.devicePixelRatio,
+        color: 0xc1cbcb
+    } );
+    reflector2.position.x;
+    reflector2.position.z = -12;
+    scene.add(reflector2);
+
+    const reflector3 = new Reflector( refGeo, {
+        clipBias: 0.003,
+        textureWidth: window.innerWidth * window.devicePixelRatio,
+        textureHeight: window.innerHeight * window.devicePixelRatio,
+        color: 0xc1cbcb
+    } );
+    reflector3.position.x = 15;
+    reflector3.position.z = -12;
+    scene.add(reflector3);
+
+    // Not complete commented out to prevent lag
+    // // Reflection side right
+    // const reflectorSR = new Reflector( refGeo, {
+    //     clipBias: 0.003,
+    //     textureWidth: window.innerWidth * window.devicePixelRatio,
+    //     textureHeight: window.innerHeight * window.devicePixelRatio,
+    //     color: 0xc1cbcb
+    // } );
+    // reflectorSR.rotation.y = -Math.PI/2;
+    // reflectorSR.position.x = 25;
+    // reflectorSR.position.z = -8;
+    // scene.add(reflectorSR);
+    // const reflectorSR2 = new Reflector( refGeo, {
+    //     clipBias: 0.003,
+    //     textureWidth: window.innerWidth * window.devicePixelRatio,
+    //     textureHeight: window.innerHeight * window.devicePixelRatio,
+    //     color: 0xc1cbcb
+    // } );
+    // reflectorSR2.rotation.y = -Math.PI/2;
+    // reflectorSR2.position.x = 25;
+    // reflectorSR2.position.z;
+    // scene.add(reflectorSR2);
+    // const reflectorSR3 = new Reflector( refGeo, {
+    //     clipBias: 0.003,
+    //     textureWidth: window.innerWidth * window.devicePixelRatio,
+    //     textureHeight: window.innerHeight * window.devicePixelRatio,
+    //     color: 0xc1cbcb
+    // } );
+    // reflectorSR3.rotation.y = -Math.PI/2;
+    // reflectorSR3.position.x = 25;
+    // reflectorSR3.position.z = 14;
+    // scene.add(reflectorSR3);
+
+    // // Reflection side left
+    // const reflectorSL = new Reflector( refGeo, {
+    //     clipBias: 0.003,
+    //     textureWidth: window.innerWidth * window.devicePixelRatio,
+    //     textureHeight: window.innerHeight * window.devicePixelRatio,
+    //     color: 0xc1cbcb
+    // } );
+    // reflectorSL.rotation.y = Math.PI/2;
+    // reflectorSL.position.x = -25;
+    // reflectorSL.position.z = -8;
+    // scene.add(reflectorSL);
+    // const reflectorSL2 = new Reflector( refGeo, {
+    //     clipBias: 0.003,
+    //     textureWidth: window.innerWidth * window.devicePixelRatio,
+    //     textureHeight: window.innerHeight * window.devicePixelRatio,
+    //     color: 0xc1cbcb
+    // } );
+    // reflectorSL.rotation.y = -Math.PI/2;
+    // reflectorSL.position.x = 10;
+    // reflectorSL.position.z;
+    // scene.add(reflectorSL);
+    // const reflectorSL3 = new Reflector( refGeo, {
+    //     clipBias: 0.003,
+    //     textureWidth: window.innerWidth * window.devicePixelRatio,
+    //     textureHeight: window.innerHeight * window.devicePixelRatio,
+    //     color: 0xc1cbcb
+    // } );
+    // reflectorSR3.rotation.y = -Math.PI/2;
+    // reflectorSR3.position.x = 25;
+    // reflectorSR3.position.z = 14;
+    // scene.add(reflectorSR3);
+
 
     // Song background
     const cubeGeo = new THREE.BoxGeometry(8, 4.5, .01);
@@ -234,8 +358,8 @@ function main() {
     scene.add(logo);
 
     // Audience
-    const count = 250;
-    const audGeo = new THREE.SphereGeometry(.25, 16, 16);
+    const count = 1000;
+    const audGeo = new THREE.SphereGeometry(.25, 4, 4);
     const audMat = new THREE.MeshPhongMaterial({ color: 0x787878 });
     const Audience = new THREE.InstancedMesh(audGeo, audMat, count);
     const temp = new THREE.Object3D();
@@ -248,7 +372,7 @@ function main() {
     // Animate audience
     const startPosition = [];
     for (let i = 0; i < count; i++) {
-        temp.position.set((Math.random() - 0.5) * 12, 0.25, Math.random() * 8 + -.5);
+        temp.position.set((Math.random() - 0.5) * 50, 0.25, Math.random() * 22 + -.5);
         temp.updateMatrix();
         Audience.setMatrixAt(i, temp.matrix);
         startPosition.push(temp.position.clone()); // store original position
@@ -259,8 +383,44 @@ function main() {
     }
     const jumpPhases = Array.from({length: count}, () => Math.random() * Math.PI * 2);
 
+    // Audience left
+    const leftCount = 200;
+    const leftStartPosition = [];
+    const leftAud = new THREE.InstancedMesh(audGeo, audMat, leftCount);
+    for (let i = 0; i < leftCount; i++) {
+        temp.position.set(Math.random() * 20 - 25, 0.25, Math.random() * -11);
+        temp.updateMatrix();
+        leftAud.setMatrixAt(i, temp.matrix);
+        leftStartPosition.push(temp.position.clone());
+    }
+    scene.add(leftAud);
+    const leftJumpers = new Set();
+    while (leftJumpers.size < leftCount * 0.5) {
+        leftJumpers.add(Math.floor(Math.random() * leftCount));
+    }
+    const leftJumpPhases = Array.from({length: leftCount}, () => Math.random() * Math.PI * 2);
+    const leftStickPhases = Array.from({length: leftCount}, () => Math.random() * Math.PI * 2);
+
+    // Audience right
+    const rightCount = 200;
+    const rightStartPosition = [];
+    const rightAud = new THREE.InstancedMesh(audGeo, audMat, rightCount);
+    for (let i = 0; i < rightCount; i++) {
+        temp.position.set(Math.random() * 20 + 5, 0.25, Math.random() * -11);
+        temp.updateMatrix();
+        rightAud.setMatrixAt(i, temp.matrix);
+        rightStartPosition.push(temp.position.clone());
+    }
+    scene.add(rightAud);
+    const rightJumpers = new Set();
+    while (rightJumpers.size < rightCount * 0.5) {
+        rightJumpers.add(Math.floor(Math.random() * rightCount));
+    }
+    const rightJumpPhases = Array.from({length: rightCount}, () => Math.random() * Math.PI * 2);
+    const rightStickPhases = Array.from({length: rightCount}, () => Math.random() * Math.PI * 2);
+    
     // Glowsticks
-    const stickCount = 250;
+    const stickCount = 1000;
     const stickGeo = new THREE.CapsuleGeometry(0.03, 0.3, 4, 8);
     const stickTemp = new THREE.Object3D();
     const stickMat = new THREE.MeshStandardMaterial({
@@ -281,9 +441,31 @@ function main() {
     }
     scene.add(GlowSticks);
 
+    // Left glowsticks
+    const GlowSticksL = new THREE.InstancedMesh(stickGeo, stickMat, leftCount);
+    for (let i = 0; i < leftCount; i++) {
+        const pos = leftStartPosition[i];
+        stickTemp.position.set(pos.x + 0.2, pos.y + 0.2, pos.z - 0.2);
+        stickTemp.rotation.set(0, 0, Math.random() * Math.PI);
+        stickTemp.updateMatrix();
+        GlowSticksL.setMatrixAt(i, stickTemp.matrix);
+    }
+    scene.add(GlowSticksL);
+
+    // Right glowsticks
+    const GlowSticksR = new THREE.InstancedMesh(stickGeo, stickMat, rightCount);
+    for (let i = 0; i < rightCount; i++) {
+        const pos = rightStartPosition[i];
+        stickTemp.position.set(pos.x - 0.4, pos.y + 0.2, pos.z - 0.2);
+        stickTemp.rotation.set(0, 0, Math.random() * Math.PI);
+        stickTemp.updateMatrix();
+        GlowSticksR.setMatrixAt(i, stickTemp.matrix);
+    }
+    scene.add(GlowSticksR);
+
     // Particles
-    const particleCount = 500;
-    const partGeo = new THREE.SphereGeometry(0.02, 16, 16);
+    const particleCount = 2000;
+    const partGeo = new THREE.SphereGeometry(0.02, 4, 4);
     const partMat = new THREE.MeshStandardMaterial({
         color: 0xFFFFFF,
         emissive: 0x00688f,
@@ -295,9 +477,9 @@ function main() {
     const particlePhases = [];
 
     for (let i = 0; i < particleCount; i++) {
-        const x = (Math.random() - 0.5) * 24;
+        const x = (Math.random() - 0.5) * 50;
         const y = Math.random() * 10;
-        const z = (Math.random() - 0.5) * 26;
+        const z = (Math.random() - 0.5) * 50;
 
         particlePositions.push({ x, y, z });
         particlePhases.push(Math.random() * Math.PI * 2);
@@ -358,9 +540,57 @@ function main() {
             stickTemp.updateMatrix();
             GlowSticks.setMatrixAt(i, stickTemp.matrix);
         }
+        // Left jumpers
+        leftJumpers.forEach(i => {
+            const jumpHeight = Math.max(0, Math.sin(time * 3 + leftJumpPhases[i])) * 0.6;
+            temp.position.set(leftStartPosition[i].x, leftStartPosition[i].y + jumpHeight, leftStartPosition[i].z);
+            temp.rotation.set(0, 0, 0);
+            temp.updateMatrix();
+            leftAud.setMatrixAt(i, temp.matrix);
 
+            stickTemp.position.set(leftStartPosition[i].x + 0.2, leftStartPosition[i].y + jumpHeight + 0.2, leftStartPosition[i].z - 0.2);
+            stickTemp.rotation.set(0, 0, Math.sin(time * 3 + leftStickPhases[i]) * 0.8);
+            stickTemp.updateMatrix();
+            GlowSticksL.setMatrixAt(i, stickTemp.matrix);
+        });
+        for (let i = 0; i < leftCount; i++) {
+            if (leftJumpers.has(i)) continue;
+            const pos = leftStartPosition[i];
+            stickTemp.position.set(pos.x + 0.2, pos.y + 0.2, pos.z - 0.2);
+            stickTemp.rotation.set(0, 0, Math.sin(time * 1.5 + leftStickPhases[i]) * 0.3);
+            stickTemp.updateMatrix();
+            GlowSticksL.setMatrixAt(i, stickTemp.matrix);
+        }
+
+        // Right jumpers
+        rightJumpers.forEach(i => {
+            const jumpHeight = Math.max(0, Math.sin(time * 3 + rightJumpPhases[i])) * 0.6;
+            temp.position.set(rightStartPosition[i].x, rightStartPosition[i].y + jumpHeight, rightStartPosition[i].z);
+            temp.rotation.set(0, 0, 0);
+            temp.updateMatrix();
+            rightAud.setMatrixAt(i, temp.matrix);
+
+            stickTemp.position.set(rightStartPosition[i].x - 0.2, rightStartPosition[i].y + jumpHeight + 0.2, rightStartPosition[i].z - 0.2);
+            stickTemp.rotation.set(0, 0, Math.sin(time * 3 + rightStickPhases[i]) * 0.8);
+            stickTemp.updateMatrix();
+            GlowSticksR.setMatrixAt(i, stickTemp.matrix);
+        });
+        for (let i = 0; i < rightCount; i++) {
+            if (rightJumpers.has(i)) continue;
+            const pos = rightStartPosition[i];
+            stickTemp.position.set(pos.x - 0.2, pos.y + 0.2, pos.z - 0.2);
+            stickTemp.rotation.set(0, 0, Math.sin(time * 1.5 + rightStickPhases[i]) * 0.3);
+            stickTemp.updateMatrix();
+            GlowSticksR.setMatrixAt(i, stickTemp.matrix);
+        }
         GlowSticks.instanceMatrix.needsUpdate = true;
         Audience.instanceMatrix.needsUpdate = true;
+
+        GlowSticksL.instanceMatrix.needsUpdate = true;
+        leftAud.instanceMatrix.needsUpdate = true;
+
+        GlowSticksR.instanceMatrix.needsUpdate = true;
+        rightAud.instanceMatrix.needsUpdate = true;
 
         // Particle movement
         for (let i = 0; i < particleCount; i++) {
